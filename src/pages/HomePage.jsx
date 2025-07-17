@@ -19,7 +19,10 @@ const HomePage = ()=>{
             setLoading(true);
             const response = await fetch(baseUrl);
             const data = await response.json();
-            changeData(data);
+            if(data && data.length > 0){
+                data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+                changeData(data);
+            };
         }catch(err){
             console.log(err);
         }finally{
