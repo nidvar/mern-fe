@@ -22,9 +22,22 @@ const HomePage = ()=>{
             if(data && data.length > 0){
                 data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
                 changeData(data);
-            };
+            }
         }catch(err){
             console.log(err);
+            const dataPlaceholder = [];
+            for(let i = 0; i< 3; i ++){
+                dataPlaceholder.push({
+                    _id: Math.random(),
+                    title: "Error",
+                    body: "Database Connection Error",
+                    username: null,
+                    email: null,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                })
+            };
+            changeData(dataPlaceholder);
         }finally{
             setLoading(false);
         }
