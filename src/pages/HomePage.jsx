@@ -18,7 +18,9 @@ const HomePage = ()=>{
         console.log(baseUrl);
         try{
             setLoading(true);
-            const response = await fetch(baseUrl);
+            const response = await fetch(baseUrl, {
+              credentials: 'include'
+            });
             const data = await response.json();
             if(data && data.length > 0){
                 data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
