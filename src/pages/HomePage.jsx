@@ -15,6 +15,7 @@ const HomePage = ()=>{
     const changeData = dataState[1];
 
     const grabData = async function(){
+        console.log(baseUrl);
         try{
             setLoading(true);
             const response = await fetch(baseUrl);
